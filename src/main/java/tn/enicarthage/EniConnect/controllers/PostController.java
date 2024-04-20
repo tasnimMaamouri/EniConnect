@@ -22,7 +22,15 @@ public class PostController {
 
     @GetMapping("AllPosts")
     public List<Post> getAllPosts() {
-        return postService.getAllPosts();
+           try {
+            if (postService.getAllPosts().isEmpty()) {
+                return (List<Post>) new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+                return (List<Post>) new ResponseEntity<>(postService.getAllPosts(), HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            return (List<Post>) new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("PostById/{ID}")
