@@ -1,0 +1,5 @@
+<root>
+    <item name='org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean entityManagerFactory(org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder, org.springframework.orm.jpa.persistenceunit.PersistenceManagedTypes)'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
