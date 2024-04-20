@@ -35,7 +35,16 @@ public class PostController {
 
     @GetMapping("PostById/{ID}")
     public Post getPostByID(@PathVariable Long ID) {
-        return postService.getPostByID(ID);
+        try {
+            Article resultat = postService.getPostByID(idPost);
+            if (resultat != null) {
+                return new ResponseEntity<>(resultat, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("PostByAncienEtd/{ID}")
