@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.enicarthage.EniConnect.entities.Article;
-import tn.enicarthage.EniConnect.services.IArticle;
+import tn.enicarthage.EniConnect.services.IArticleService;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/GArticle")
 public class ArticleController {
     @Autowired
-    private IArticle articleService;
+    private IArticleService articleService;
 
     @PostMapping("/AddArticle")
 

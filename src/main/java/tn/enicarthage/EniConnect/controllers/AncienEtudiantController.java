@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tn.enicarthage.EniConnect.entities.AncienEtudiant;
-import tn.enicarthage.EniConnect.services.IAncienEtudiant;
+import tn.enicarthage.EniConnect.services.IAncienEtudiantService;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/GAncienEtudiant")
 public class AncienEtudiantController {
     @Autowired
-    private IAncienEtudiant ancienEtudiantService;
+    private IAncienEtudiantService ancienEtudiantService;
 
     @PostMapping("/AddAncienEtudiant")
     public ResponseEntity<AncienEtudiant> addAncienEtudiant(@RequestBody AncienEtudiant ancienEtudiant) {

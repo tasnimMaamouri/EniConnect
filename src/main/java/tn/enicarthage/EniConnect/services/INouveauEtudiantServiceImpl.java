@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NouveauEtudiantServiceImpl implements NouveauEtudiantService{
+public class INouveauEtudiantServiceImpl implements INouveauEtudiantService {
     @Autowired
     private NouveauEtudiantRepository etdrepo;
     @Autowired

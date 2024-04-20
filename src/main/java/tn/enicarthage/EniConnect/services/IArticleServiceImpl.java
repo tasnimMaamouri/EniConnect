@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class IarticleImpl implements IArticle {
+public class IArticleServiceImpl implements IArticleService {
     @Autowired
     private ArticleRepository articleR;
     @Autowired

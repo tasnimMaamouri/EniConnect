@@ -4,7 +4,7 @@ import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
 
 import java.util.List;
 
-public interface NouveauEtudiantService {
+public interface INouveauEtudiantService {
     void AffecterCandidatureAEtudiant(Long IdC,Long IdE);
     byte[] getCVByEtudiantId(Long etudiantId);
     NouveauEtudiant createNouveauEtudiant(NouveauEtudiant Etd);

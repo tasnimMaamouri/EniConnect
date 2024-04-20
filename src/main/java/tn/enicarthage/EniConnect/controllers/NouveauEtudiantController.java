@@ -8,14 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
-import tn.enicarthage.EniConnect.services.NouveauEtudiantService;
+import tn.enicarthage.EniConnect.services.INouveauEtudiantService;
 
 import java.util.List;
 
 @RestController
 public class NouveauEtudiantController {
     @Autowired
-    private NouveauEtudiantService etdservice;
+    private INouveauEtudiantService etdservice;
     @PutMapping("/AffecterCandidatureAEtudiant/{IdC}/{IdE}")
     @ResponseBody
     public void AffecterCandidatureAEtudiant(@PathVariable("IdC") Long IdC, @PathVariable("IdE") Long IdE){

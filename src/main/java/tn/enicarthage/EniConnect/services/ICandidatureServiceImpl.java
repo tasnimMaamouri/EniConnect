@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CandidatureServiceImpl implements CandidatureService{
+public class ICandidatureServiceImpl implements ICandidatureService {
     @Autowired
     private CandidatureRepository cdrepo;
 

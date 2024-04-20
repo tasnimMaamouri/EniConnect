@@ -4,7 +4,7 @@ import tn.enicarthage.EniConnect.entities.AncienEtudiant;
 
 import java.util.List;
 
-public interface IAncienEtudiant {
+public interface IAncienEtudiantService {
     AncienEtudiant addAncienEtudiant(AncienEtudiant ancienEtudiant);
     List<AncienEtudiant> getAllAncienEtudiant();
     AncienEtudiant getAncienEtudiantById(Long id);

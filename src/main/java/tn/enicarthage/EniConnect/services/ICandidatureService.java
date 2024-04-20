@@ -4,7 +4,7 @@ import tn.enicarthage.EniConnect.entities.Candidature;
 
 import java.util.List;
 
-public interface CandidatureService {
+public interface ICandidatureService {
     Candidature createNouvelleCandidature(Candidature candidature);
 
     List<Candidature> getAllCandidatures();

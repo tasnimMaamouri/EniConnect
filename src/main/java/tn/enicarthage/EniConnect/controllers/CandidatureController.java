@@ -3,7 +3,7 @@ package tn.enicarthage.EniConnect.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.enicarthage.EniConnect.entities.Candidature;
-import tn.enicarthage.EniConnect.services.CandidatureService;
+import tn.enicarthage.EniConnect.services.ICandidatureService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/candidatures")
 public class CandidatureController {
     @Autowired
-    private CandidatureService cdService;
+    private ICandidatureService cdService;
     @RequestMapping(method = RequestMethod.GET)
     public List<Candidature> getAllCandidatures(){
         return cdService.getAllCandidatures();

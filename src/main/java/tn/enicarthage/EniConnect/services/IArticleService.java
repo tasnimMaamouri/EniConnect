@@ -4,7 +4,7 @@ import tn.enicarthage.EniConnect.entities.Article;
 
 import java.util.List;
 
-public interface IArticle {
+public interface IArticleService {
 
     Article addArticle(Article article);
     List<Article> getAllArticle();
