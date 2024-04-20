@@ -1,7 +1,6 @@
-package ENIConnect.projetEnicar.service;
+package tn.enicarthage.service;
 
-import ENIConnect.projetEnicar.entities.Candidature;
-import ENIConnect.projetEnicar.entities.NouveauEtudiant;
+import tn.enicarthage.entities.Candidature;
 
 import java.util.List;
 

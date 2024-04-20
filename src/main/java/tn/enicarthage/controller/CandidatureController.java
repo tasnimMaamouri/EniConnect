@@ -1,13 +1,11 @@
-package ENIConnect.projetEnicar.controller;
+package tn.enicarthage.controller;
 
-import ENIConnect.projetEnicar.entities.Candidature;
-import ENIConnect.projetEnicar.entities.NouveauEtudiant;
-import ENIConnect.projetEnicar.service.CandidatureService;
+import tn.enicarthage.entities.Candidature;
+import tn.enicarthage.service.CandidatureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @RestController

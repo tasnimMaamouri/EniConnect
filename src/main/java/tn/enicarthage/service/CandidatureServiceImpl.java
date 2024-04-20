@@ -1,8 +1,7 @@
-package ENIConnect.projetEnicar.service;
+package tn.enicarthage.service;
 
-import ENIConnect.projetEnicar.entities.Candidature;
-import ENIConnect.projetEnicar.entities.NouveauEtudiant;
-import ENIConnect.projetEnicar.repository.CandidatureRepository;
+import tn.enicarthage.entities.Candidature;
+import tn.enicarthage.repository.CandidatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

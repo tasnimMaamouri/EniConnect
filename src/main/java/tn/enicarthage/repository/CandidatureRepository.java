@@ -1,7 +1,7 @@
-package ENIConnect.projetEnicar.repository;
+package tn.enicarthage.repository;
 
-import ENIConnect.projetEnicar.entities.Candidature;
-import ENIConnect.projetEnicar.entities.Etat;
+import tn.enicarthage.entities.Candidature;
+import tn.enicarthage.entities.Etat;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

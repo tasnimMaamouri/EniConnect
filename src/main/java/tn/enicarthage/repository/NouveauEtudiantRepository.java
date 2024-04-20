@@ -1,6 +1,6 @@
-package ENIConnect.projetEnicar.repository;
+package tn.enicarthage.repository;
 
-import ENIConnect.projetEnicar.entities.NouveauEtudiant;
+import tn.enicarthage.entities.NouveauEtudiant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NouveauEtudiantRepository extends JpaRepository<NouveauEtudiant,Long> {

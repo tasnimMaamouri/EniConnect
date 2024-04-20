@@ -1,4 +1,4 @@
-package ENIConnect.projetEnicar.entities;
+package tn.enicarthage.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

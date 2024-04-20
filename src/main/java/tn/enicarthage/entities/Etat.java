@@ -1,4 +1,4 @@
-package ENIConnect.projetEnicar.entities;
+package tn.enicarthage.entities;
 
 public enum Etat {
     EnAttente,

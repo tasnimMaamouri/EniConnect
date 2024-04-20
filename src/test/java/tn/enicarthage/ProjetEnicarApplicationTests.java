@@ -1,18 +1,17 @@
-package ENIConnect.projetEnicar;
+package tn.enicarthage;
 
-import ENIConnect.projetEnicar.entities.Candidature;
-import ENIConnect.projetEnicar.entities.NouveauEtudiant;
-import ENIConnect.projetEnicar.repository.CandidatureRepository;
-import ENIConnect.projetEnicar.repository.NouveauEtudiantRepository;
-import jakarta.transaction.Transactional;
+import tn.enicarthage.entities.Candidature;
+import tn.enicarthage.entities.NouveauEtudiant;
+import tn.enicarthage.repository.CandidatureRepository;
+import tn.enicarthage.repository.NouveauEtudiantRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import tn.enicarthage.entities.Etat;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import static ENIConnect.projetEnicar.entities.Etat.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
@@ -36,7 +35,7 @@ class ProjetEnicarApplicationTests {
 	public void testcreateCandidature(){
 		LocalDate aujourdhui = LocalDate.now();
 
-		Candidature cd = new Candidature(aujourdhui, EnAttente);
+		Candidature cd = new Candidature(aujourdhui, Etat.EnAttente);
 		cdrepo.save(cd);
 	}
 	@Test
@@ -70,7 +69,7 @@ class ProjetEnicarApplicationTests {
 		if (etudiant != null) {
 			for (Candidature candidature : etudiant.getCandidatures()) {
 				// Accessing the candidature within the active session
-				candidature.setEtat(EnAttente);
+				candidature.setEtat(Etat.EnAttente);
 				cdrepo.save(candidature);
 			}
 			System.out.println(etudiant);
@@ -84,7 +83,7 @@ class ProjetEnicarApplicationTests {
 	}
 	@Test
 	public void testfindByEtat(){
-		List <Candidature> cds = cdrepo.findByEtat(EnAttente);
+		List <Candidature> cds = cdrepo.findByEtat(Etat.EnAttente);
 		for (Candidature cd:cds)
 			System.out.println(cd);
 	}
