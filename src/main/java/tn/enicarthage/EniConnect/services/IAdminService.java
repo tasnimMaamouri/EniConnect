@@ -13,4 +13,6 @@ public interface IAdminService {
     void createAdmin(Admin admin);
 
     void deleteAdminById(Long adminId);
+
+    void updateAdminById(Long adminId, Admin newAdmin);
 }
