@@ -1,4 +1,4 @@
-package tn.enicarthage;
+package tn.enicarthage.EniConnect;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

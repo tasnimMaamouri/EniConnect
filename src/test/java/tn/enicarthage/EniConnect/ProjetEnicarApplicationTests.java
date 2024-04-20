@@ -1,13 +1,13 @@
-package tn.enicarthage;
+package tn.enicarthage.EniConnect;
 
-import tn.enicarthage.entities.Candidature;
-import tn.enicarthage.entities.NouveauEtudiant;
-import tn.enicarthage.repository.CandidatureRepository;
-import tn.enicarthage.repository.NouveauEtudiantRepository;
+import tn.enicarthage.EniConnect.entities.Etat;
+import tn.enicarthage.EniConnect.repository.CandidatureRepository;
+import tn.enicarthage.EniConnect.repository.NouveauEtudiantRepository;
+import tn.enicarthage.EniConnect.entities.Candidature;
+import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import tn.enicarthage.entities.Etat;
 
 import java.time.LocalDate;
 import java.util.List;

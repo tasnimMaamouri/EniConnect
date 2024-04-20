@@ -1,6 +1,6 @@
-package tn.enicarthage.service;
+package tn.enicarthage.EniConnect.service;
 
-import tn.enicarthage.entities.NouveauEtudiant;
+import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
 
 import java.util.List;
 

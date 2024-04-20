@@ -1,4 +1,4 @@
-package tn.enicarthage.entities;
+package tn.enicarthage.EniConnect.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

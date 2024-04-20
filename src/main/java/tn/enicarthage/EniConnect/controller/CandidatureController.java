@@ -1,7 +1,7 @@
-package tn.enicarthage.controller;
+package tn.enicarthage.EniConnect.controller;
 
-import tn.enicarthage.entities.Candidature;
-import tn.enicarthage.service.CandidatureService;
+import tn.enicarthage.EniConnect.entities.Candidature;
+import tn.enicarthage.EniConnect.service.CandidatureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
