@@ -39,9 +39,20 @@ public class PostController {
         return postService.savePost(post);
     }
 
-    @DeleteMapping("deletePost/{ID}")
-    public void deletePost(@PathVariable Long ID) {
-        postService.deletePost(ID);
+
+     @DeleteMapping("/DeleteAPost/{idPost}")
+
+    public ResponseEntity<HttpStatus> deletePost(@PathVariable("idPost") Long idPost) {
+        try {
+            if (postService.getPostByID(idPost) != null) {
+                postService.deletePost(idPost);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/UpdatePost/{idPost}")
