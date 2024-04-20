@@ -1,8 +1,7 @@
-package tn.enicarthage.EniConnect.Dao;
+package tn.enicarthage.EniConnect.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import tn.enicarthage.EniConnect.Entity.AncienEtudiant;
-import tn.enicarthage.EniConnect.Entity.Article;
+import tn.enicarthage.EniConnect.entities.AncienEtudiant;
 
 public interface AncienEtudiantRepository extends JpaRepository<AncienEtudiant, Long> {
     AncienEtudiant findByEmailInstitutionnelle(String email);

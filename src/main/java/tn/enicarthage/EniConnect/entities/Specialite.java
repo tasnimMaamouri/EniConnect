@@ -1,4 +1,4 @@
-package tn.enicarthage.EniConnect.Entity;
+package tn.enicarthage.EniConnect.entities;
 
 public enum Specialite {
     informatique,

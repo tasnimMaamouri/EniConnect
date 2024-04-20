@@ -1,6 +1,6 @@
-package tn.enicarthage.EniConnect.Iservice;
+package tn.enicarthage.EniConnect.services;
 
-import tn.enicarthage.EniConnect.Entity.AncienEtudiant;
+import tn.enicarthage.EniConnect.entities.AncienEtudiant;
 
 import java.util.List;
 

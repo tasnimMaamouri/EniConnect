@@ -1,4 +1,4 @@
-package tn.enicarthage.EniConnect.Entity;
+package tn.enicarthage.EniConnect.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

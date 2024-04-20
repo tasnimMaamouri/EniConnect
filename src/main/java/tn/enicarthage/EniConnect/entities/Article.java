@@ -1,4 +1,4 @@
-package tn.enicarthage.EniConnect.Entity;
+package tn.enicarthage.EniConnect.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

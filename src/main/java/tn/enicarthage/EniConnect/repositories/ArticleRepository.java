@@ -1,6 +1,6 @@
-package tn.enicarthage.EniConnect.Dao;
+package tn.enicarthage.EniConnect.repositories;
 
-import tn.enicarthage.EniConnect.Entity.Article;
+import tn.enicarthage.EniConnect.entities.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

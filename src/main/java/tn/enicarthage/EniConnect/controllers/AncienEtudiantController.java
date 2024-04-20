@@ -1,18 +1,18 @@
-package tn.enicarthage.EniConnect.Controller;
+package tn.enicarthage.EniConnect.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import tn.enicarthage.EniConnect.Entity.AncienEtudiant;
-import tn.enicarthage.EniConnect.Iservice.IAncienEtudiant;
+import tn.enicarthage.EniConnect.entities.AncienEtudiant;
+import tn.enicarthage.EniConnect.services.IAncienEtudiant;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/GAncienEtudiant")
-public class controllerAncienEtudiant {
+public class AncienEtudiantController {
     @Autowired
     private IAncienEtudiant ancienEtudiantService;
 

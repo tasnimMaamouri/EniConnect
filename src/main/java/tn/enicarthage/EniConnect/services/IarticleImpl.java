@@ -1,11 +1,10 @@
-package tn.enicarthage.EniConnect.Service;
+package tn.enicarthage.EniConnect.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.enicarthage.EniConnect.Dao.AncienEtudiantRepository;
-import tn.enicarthage.EniConnect.Dao.ArticleRepository;
-import tn.enicarthage.EniConnect.Entity.Article;
-import tn.enicarthage.EniConnect.Iservice.IArticle;
+import tn.enicarthage.EniConnect.repositories.AncienEtudiantRepository;
+import tn.enicarthage.EniConnect.repositories.ArticleRepository;
+import tn.enicarthage.EniConnect.entities.Article;
 
 import java.util.ArrayList;
 import java.util.List;
