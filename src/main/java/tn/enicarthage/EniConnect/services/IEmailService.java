@@ -1,7 +1,10 @@
 package tn.enicarthage.EniConnect.services;
 
+import javax.mail.MessagingException;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface IEmailService {
-    String sendMail(MultipartFile[] file, String to, String[] cc, String subject, String body);
+    void sendEmail(String to, String subject, String text) throws MessagingException;
+
 }

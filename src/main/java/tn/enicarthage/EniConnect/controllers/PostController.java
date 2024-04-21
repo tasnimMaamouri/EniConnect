@@ -5,105 +5,79 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import tn.enicarthage.EniConnect.entities.AncienEtudiant;
 import tn.enicarthage.EniConnect.entities.Article;
 import tn.enicarthage.EniConnect.entities.Post;
 import tn.enicarthage.EniConnect.entities.Status;
+import tn.enicarthage.EniConnect.services.IAncienEtudiantServiceImpl;
 import tn.enicarthage.EniConnect.services.IPostService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/api")
 public class PostController {
 
+    private final IPostService postService;
+    private final IAncienEtudiantServiceImpl ancienEtudiantService;
+
     @Autowired
-    private IPostService postService;
+    public PostController(IPostService postService, IAncienEtudiantServiceImpl ancienEtudiantService) {
+        this.postService = postService;
+        this.ancienEtudiantService = ancienEtudiantService;
+    }
 
-    @GetMapping("AllPosts")
+    @GetMapping("/posts")
     public List<Post> getAllPosts() {
-           try {
-            if (postService.getAllPosts().isEmpty()) {
-                return (List<Post>) new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            } else {
-                return (List<Post>) new ResponseEntity<>(postService.getAllPosts(), HttpStatus.OK);
-            }
-        } catch (Exception e) {
-            return (List<Post>) new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        return postService.getAllPosts();
+    }
+
+    @GetMapping("/posts/{postId}")
+    public ResponseEntity<Post> getPostById(@PathVariable Long postId) {
+        try {
+            Post post = postService.getPostById(postId).orElseThrow(() -> new IllegalArgumentException("Post with ID " + postId + " not found."));
+            return ResponseEntity.ok(post);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
-    @GetMapping("PostById/{ID}")
-    public ResponseEntity<Post> getPostByID(@PathVariable Long ID) {
+    @PostMapping("/ancien/{ancienId}/post/create")
+    public ResponseEntity<Post> createPost(@PathVariable Long ancienId, @RequestBody Post post) {
         try {
-            Post resultat = postService.getPostByID(ID);
-            if (resultat != null) {
-                return new ResponseEntity<>(resultat, HttpStatus.OK);
+            Optional<AncienEtudiant> ancienOptional = Optional.ofNullable(ancienEtudiantService.getAncienEtudiantById(ancienId));
+            if (ancienOptional.isPresent()) {
+                post.setAncienEtudiant(ancienOptional.get());
+                Post createdPost = postService.createPost(post);
+                return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
             } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                throw new IllegalArgumentException("Ancien Etudiant with id " + ancienId + " not found.");
             }
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
-    @GetMapping("PostByAncienEtd/{ID}")
-    List<Post> getPostsByAncienEtudiant(@RequestBody String emailPersonnelle)
-    {return postService.getPostsByAncienEtudiant(emailPersonnelle);}
-
-    @PostMapping("AddPost")
-    public Post savePost(@RequestBody Post post) {
-        return postService.savePost(post);
-    }
-
-
-     @DeleteMapping("/DeleteAPost/{idPost}")
-
-    public ResponseEntity<HttpStatus> deletePost(@PathVariable("idPost") Long idPost) {
+    @DeleteMapping("/posts/{postId}")
+    public ResponseEntity<Void> deletePostById(@PathVariable Long postId) {
         try {
-            if (postService.getPostByID(idPost) != null) {
-                postService.deletePost(idPost);
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            postService.deletePostById(postId);
+            return ResponseEntity.noContent().build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
-    @PutMapping("/UpdatePost/{idPost}")
-    public ResponseEntity<Post> updatePost(@RequestBody Post post, @PathVariable("idPost") Long idPost) {
+    @PutMapping("/ancien/{ancienId}/post/{postId}")
+    public ResponseEntity<Post> updatePost(@PathVariable Long ancienId, @PathVariable Long postId, @RequestBody Post updatedPost) {
         try {
-            if (postService.getPostByID(idPost) != null) {
-
-                return new ResponseEntity<>(postService.updatePost(post , idPost) ,HttpStatus.OK);
-
-
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-
-    @PostMapping("/upload")
-    public ResponseEntity<Post> uploadPost(@RequestParam("pdfFile") MultipartFile pdfFile,
-                                           @RequestParam("ownerID") Long ownerID,
-                                           @RequestParam("title") String title,
-                                           @RequestParam("content") String content,
-                                           @RequestParam("status") Status status) {
-        try {
-            Post uploadedPost = postService.uploadPost(pdfFile, ownerID, title, content, status);
-            return ResponseEntity.ok(uploadedPost);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            Post updated = postService.updatePostById(ancienId, postId, updatedPost);
+            return ResponseEntity.ok(updated);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
 }
-
-
