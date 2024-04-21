@@ -1,43 +1,36 @@
 package tn.enicarthage.EniConnect.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
-
+import lombok.*;
 
 @Entity
-@Table(name = "Post")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@Table
+public class Post {
 
-public class Post implements Serializable {
-
-    @Id
-    @Column(name="Identifier")
-    private Long ID;
-
-    @Column(name="ownerID")
-    private Long ownerID;
+    @jakarta.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="Id")
+    private Long Id;
 
     @Column(name="title")
     private String title;
 
+    @Lob
     @Column(name="content")
     private String content;
 
     @Column(name="status")
-    private Status status ;
+    @Enumerated(EnumType.STRING) // Specify that the status is stored as a string
+    private Status status = Status.DRAFT; // Default status set to DRAFT
 
-    @ManyToOne
+
+    @ManyToOne()
+    @JoinColumn(name = "AncienEtudiant",referencedColumnName = "idAncienEtudiant")
     private AncienEtudiant ancienEtudiant;
-
-    @ManyToOne
-    private Admin admin;
-
-    public void setAncienEtudiant(Object o) {
-    }
 }

@@ -53,9 +53,9 @@ public class AncienEtudiant {
     @OneToMany(mappedBy = "ancienEtudiant")
     private List<Article> articles;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "ancienEtudiant")
-    private List<Post> posts;
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @OneToMany(mappedBy = "ancienEtudiant")
+//    private List<Post> posts;
 
 
 }

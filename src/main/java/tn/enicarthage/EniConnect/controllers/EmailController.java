@@ -1,10 +1,7 @@
 package tn.enicarthage.EniConnect.controllers;
 
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tn.enicarthage.EniConnect.services.IEmailService;
 
@@ -17,9 +14,17 @@ public class EmailController {
         this.emailService = emailService;
     }
 
-    @PostMapping("/send")
+    /*@PostMapping("/send")
     public String sendMail(@RequestParam(value = "file", required = false) MultipartFile[] file, String to, String[] cc, String subject, String body) {
         return emailService.sendMail(file, to, cc, subject, body);
+    }*/
+    @PostMapping("/SendMail/{to}/{subject}")
+    public void save(@RequestBody String text, @PathVariable("to")String to, @PathVariable("subject")String subject){
+
+
+        emailService.sendSimpleMessage(to,subject,text);
+
+
     }
 }
 

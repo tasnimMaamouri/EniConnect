@@ -3,9 +3,9 @@ package tn.enicarthage.EniConnect.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import tn.enicarthage.EniConnect.entities.AncienEtudiant;
 import tn.enicarthage.EniConnect.entities.Post;
 import tn.enicarthage.EniConnect.entities.Status;
-import tn.enicarthage.EniConnect.repositories.AdminRepository;
 import tn.enicarthage.EniConnect.repositories.AncienEtudiantRepository;
 import tn.enicarthage.EniConnect.repositories.PostRepository;
 
@@ -13,72 +13,52 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
-public class IPostServiceImpl implements IPostService{
+public class IPostServiceImpl implements IPostService {
+
+    private final PostRepository postRepository;
+    private final IAncienEtudiantService ancienEtudiantService;
 
     @Autowired
-    private static PostRepository postRepository;
-    @Autowired
-    private AdminRepository adminRepository;
-    @Autowired
-    private AncienEtudiantRepository ancienEtudiantRepository;
-
-    @Override
-    public List<Post> getPostsByAncienEtudiant(String emailPersonnelle) {
-        List<Post> posts=new ArrayList<Post>();
-        for(Post article:postRepository.findByAncienEtudiantEmailPersonnelle(emailPersonnelle)) {
-            posts.add(article);
-        }
-
-        return posts;
-    }
-
-    @Override
-    public Post getPostByID(Long id) {
-        return null;
+    public IPostServiceImpl(PostRepository postRepository, IAncienEtudiantService ancienEtudiantService) {
+        this.postRepository = postRepository;
+        this.ancienEtudiantService = ancienEtudiantService;
     }
 
     @Override
     public List<Post> getAllPosts() {
-        List<Post> posts=new ArrayList<Post>();
-        for(Post article:postRepository.findAll()) {
-            posts.add(article);
-        }
-        return posts;    }
-
-    @Override
-    public Post savePost(Post post) {
-
-        return postRepository.save(post);
-
+        return postRepository.findAll();
     }
 
     @Override
-    public void deletePost(Long id) {
+    public Optional<Post> getPostById(Long id) {
+        return postRepository.findById(id);
+    }
+
+    @Override
+    public Post createPost(Post post) {
+        return postRepository.save(post);
+    }
+
+    @Override
+    public void deletePostById(Long id) {
         postRepository.deleteById(id);
     }
 
     @Override
-    public Post updatePost(Post post, Long id) {
-        post.setID(id);
-
-        return postRepository.save(post);
+    public Post updatePostById(Long ancienId, Long postId, Post updatedPost) {
+        AncienEtudiant ancienEtudiant = ancienEtudiantService.getAncienEtudiantById(ancienId);
+        if (ancienEtudiant == null) {
+            throw new IllegalArgumentException("Ancien Etudiant with ID " + ancienId + " not found.");
+        }
+        Post post = getPostById(postId).orElseThrow(() -> new IllegalArgumentException("Post with ID " + postId + " not found."));
+        if (!post.getAncienEtudiant().equals(ancienEtudiant)) {
+            throw new IllegalArgumentException("Ancien Etudiant with ID " + ancienId + " does not have permission to update post with ID " + postId);
+        }
+        updatedPost.setId(postId);
+        return postRepository.save(updatedPost);
     }
-
-
-    @Override
-    public Post uploadPost(MultipartFile pdfFile, Long ownerID, String title, String content, Status status) throws IOException {
-        Post post = new Post();
-        post.setOwnerID(ownerID);
-        post.setTitle(title);
-        post.setContent(content);
-        post.setStatus(status);
-
-        post.setContent(Arrays.toString(pdfFile.getBytes()));
-        return postRepository.save(post);
-    }
-
-
 }
