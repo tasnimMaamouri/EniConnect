@@ -27,18 +27,18 @@ public class AdminController {
         }
         }
 
-        @GetMapping("/{GetAdminId}")
-        public ResponseEntity<Admin> getAdminById(@PathVariable Long adminId) {
-
-            try {
-                Admin admin = adminService.getAdminById(adminId);
-                return ResponseEntity.ok(admin);
-            } catch (IllegalArgumentException e) {
-                return ResponseEntity.notFound().build();
-            }
+    @GetMapping(path = "{adminId}")
+    public ResponseEntity<Admin> getAdminById(@PathVariable("adminId") Long adminId) {
+        try {
+            Admin admin = adminService.getAdminById(adminId);
+            return ResponseEntity.ok(admin);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
         }
+    }
 
-        @PostMapping("/{CreateAdminId}")
+
+    @PostMapping("/create")
         public ResponseEntity<String> createAdmin(@RequestBody Admin admin) {
 
             try {
@@ -49,22 +49,22 @@ public class AdminController {
             }
         }
 
-        @DeleteMapping("/{DeleteAdminId}")
-        public ResponseEntity<String> deleteAdminById(@PathVariable Long adminId) {
 
-            try {
-                adminService.deleteAdminById(adminId);
-                return ResponseEntity.ok("Admin deleted successfully");
-            } catch (IllegalArgumentException e) {
-                return ResponseEntity.notFound().build();
-            }
+    @DeleteMapping(path = "{adminId}")
+    public ResponseEntity<String> deleteAdminById(@PathVariable("adminId") Long adminId) {
+        try {
+            adminService.deleteAdminById(adminId);
+            return ResponseEntity.ok("Admin deleted successfully");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
         }
+    }
 
     @PutMapping(path = "{adminId}")
-    public ResponseEntity<Void> updateAdminById(@PathVariable("adminId") Long adminId, @RequestBody Admin newAdmin) {
+    public ResponseEntity<String> updateAdminById(@PathVariable("adminId") Long adminId, @RequestBody Admin newAdmin) {
         try {
             adminService.updateAdminById(adminId, newAdmin);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("Admin Appdated successfully");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
