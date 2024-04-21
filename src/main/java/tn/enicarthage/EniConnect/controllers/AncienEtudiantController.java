@@ -10,6 +10,8 @@ import tn.enicarthage.EniConnect.services.IAncienEtudiantService;
 
 import java.util.List;
 
+@CrossOrigin("*")
+
 @Controller
 @RequestMapping("/GAncienEtudiant")
 public class AncienEtudiantController {
@@ -58,6 +60,19 @@ public class AncienEtudiantController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    @GetMapping("/AncienEtudiantByEmail/{emailAncienEtudiant}")
+    public ResponseEntity<AncienEtudiant> getMedecinByEmail(@PathVariable ("emailAncienEtudiant") String emailAncienEtudiant ) {
+        try {
+            AncienEtudiant resultat=ancienEtudiantService.getAncienEtudiantByEmail(emailAncienEtudiant);
+            if (resultat!=null) {
+                return new ResponseEntity<>(resultat, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @PutMapping("/UpdateAncienEtudiant/{idAncienEtudiant}")
 
