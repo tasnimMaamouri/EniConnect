@@ -1,6 +1,6 @@
 package tn.enicarthage.EniConnect.services;
 
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.enicarthage.EniConnect.entities.Candidature;

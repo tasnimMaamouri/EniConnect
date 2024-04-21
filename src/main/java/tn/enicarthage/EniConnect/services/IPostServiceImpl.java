@@ -19,11 +19,7 @@ import java.util.List;
 public class IPostServiceImpl implements IPostService{
 
     @Autowired
-    private static PostRepository postRepository;
-    @Autowired
-    private AdminRepository adminRepository;
-    @Autowired
-    private AncienEtudiantRepository ancienEtudiantRepository;
+    private  PostRepository postRepository;
 
     @Override
     public List<Post> getPostsByAncienEtudiant(String emailPersonnelle) {
@@ -71,7 +67,6 @@ public class IPostServiceImpl implements IPostService{
     @Override
     public Post uploadPost(MultipartFile pdfFile, Long ownerID, String title, String content, Status status) throws IOException {
         Post post = new Post();
-        post.setOwnerID(ownerID);
         post.setTitle(title);
         post.setContent(content);
         post.setStatus(status);

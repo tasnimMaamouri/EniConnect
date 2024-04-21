@@ -1,8 +1,8 @@
 package tn.enicarthage.EniConnect.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.*;
+
+import javax.persistence.*;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -40,9 +40,6 @@ public class Admin {
         return Period.between(dateOfBirth,LocalDate.now()).getYears();
     }
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "admin")
-    private List<Post> posts;
 
 
 }

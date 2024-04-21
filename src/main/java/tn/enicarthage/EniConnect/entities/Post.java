@@ -1,6 +1,6 @@
 package tn.enicarthage.EniConnect.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +20,6 @@ public class Post implements Serializable {
     @Column(name="Identifier")
     private Long ID;
 
-    @Column(name="ownerID")
-    private Long ownerID;
-
     @Column(name="title")
     private String title;
 
@@ -33,11 +30,8 @@ public class Post implements Serializable {
     private Status status ;
 
     @ManyToOne
+    @JoinColumn(name = "AncienEtudiant",referencedColumnName = "idAncienEtudiant")
     private AncienEtudiant ancienEtudiant;
 
-    @ManyToOne
-    private Admin admin;
 
-    public void setAncienEtudiant(Object o) {
-    }
 }

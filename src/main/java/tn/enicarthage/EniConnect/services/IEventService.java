@@ -1,6 +1,6 @@
 package tn.enicarthage.EniConnect.services;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import tn.enicarthage.EniConnect.entities.Event;
 
 import java.util.List;

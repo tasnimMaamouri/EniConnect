@@ -13,6 +13,7 @@ import tn.enicarthage.EniConnect.services.INouveauEtudiantService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/GNouveauEtudiant")
 public class NouveauEtudiantController {
     @Autowired
     private INouveauEtudiantService etdservice;
