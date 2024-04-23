@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import tn.enicarthage.EniConnect.entities.Utilisateur;
 import tn.enicarthage.EniConnect.repositories.UtilisateurRepository;
+import tn.enicarthage.EniConnect.services.EmailServiceImpl;
 import tn.enicarthage.EniConnect.services.IUtilisateur;
 
 import java.util.Optional;
@@ -22,6 +23,8 @@ public class ControllerUtilisateur {
     @Autowired
     PasswordEncoder encoder;
 
+    @Autowired
+    private EmailServiceImpl service;
     @Autowired
     UtilisateurRepository utilisateurRepository;
     @GetMapping("/UtilisateurByEmail/{emailUtilisateur}")
@@ -76,6 +79,14 @@ public class ControllerUtilisateur {
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+    }
+    @PostMapping("/SendMail/{to}/{subject}")
+    public void save(@RequestBody String text,@PathVariable("to")String to,@PathVariable("subject")String subject){
+
+
+        service.sendSimpleMessage(to,subject,text);
+
 
     }
 
