@@ -25,7 +25,7 @@ public class IArticleServiceImpl implements IArticleService {
     @Override
     public List<Article> getAllArticle() {
         List<Article> articles=new ArrayList<Article>();
-        for(Article article:articleR.findAll()) {
+        for(Article article:articleR.findAllByOrderByCreatedDateDesc()) {
             articles.add(article);
         }
 

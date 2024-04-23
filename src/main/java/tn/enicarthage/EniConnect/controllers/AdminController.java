@@ -8,7 +8,7 @@ import tn.enicarthage.EniConnect.entities.Admin;
 import tn.enicarthage.EniConnect.services.IAdminService;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

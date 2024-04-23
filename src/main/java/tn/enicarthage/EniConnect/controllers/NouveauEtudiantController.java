@@ -12,6 +12,8 @@ import tn.enicarthage.EniConnect.services.INouveauEtudiantService;
 
 import java.util.List;
 
+@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/GNouveauEtudiant")
 public class NouveauEtudiantController {

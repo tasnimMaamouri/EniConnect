@@ -8,6 +8,7 @@ import tn.enicarthage.EniConnect.services.ICandidatureService;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/candidatures")
 public class CandidatureController {

@@ -18,7 +18,7 @@ public class ArticleController {
 
     @PostMapping("/AddArticle")
 
-    public ResponseEntity<Article> addOrdonnance(@RequestBody Article article) {
+    public ResponseEntity<Article> addArticle(@RequestBody Article article) {
         try {
 
             return new ResponseEntity<Article>(articleService.addArticle(article), HttpStatus.CREATED);
@@ -111,7 +111,7 @@ public class ArticleController {
 
     @DeleteMapping("/DeleteArticle/{idArticle}")
 
-    public ResponseEntity<HttpStatus> deleteOrdonnance(@PathVariable("idArticle") Long idArticle) {
+    public ResponseEntity<HttpStatus> deleteArticle(@PathVariable("idArticle") Long idArticle) {
         try {
             if (articleService.getArticleById(idArticle) != null) {
                 articleService.deleteArticle(idArticle);

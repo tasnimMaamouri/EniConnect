@@ -13,6 +13,8 @@ import tn.enicarthage.EniConnect.services.IEventServiceImpl;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/api/event")
 public class EventController {
