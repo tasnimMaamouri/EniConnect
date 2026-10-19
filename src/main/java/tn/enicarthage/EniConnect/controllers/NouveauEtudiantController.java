@@ -1,7 +1,7 @@
-package tn.enicarthage.EniConnect.controller;
+package tn.enicarthage.EniConnect.controllers;
 
 import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
-import tn.enicarthage.EniConnect.service.NouveauEtudiantService;
+import tn.enicarthage.EniConnect.services.NouveauEtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

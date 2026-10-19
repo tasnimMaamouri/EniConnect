@@ -1,4 +1,4 @@
-package tn.enicarthage.EniConnect.repository;
+package tn.enicarthage.EniConnect.repositories;
 
 import tn.enicarthage.EniConnect.entities.Candidature;
 import tn.enicarthage.EniConnect.entities.Etat;

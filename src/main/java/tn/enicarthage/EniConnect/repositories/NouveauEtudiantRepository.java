@@ -1,4 +1,4 @@
-package tn.enicarthage.EniConnect.repository;
+package tn.enicarthage.EniConnect.repositories;
 
 import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
 import org.springframework.data.jpa.repository.JpaRepository;

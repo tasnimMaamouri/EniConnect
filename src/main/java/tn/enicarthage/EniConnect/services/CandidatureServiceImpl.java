@@ -1,7 +1,7 @@
-package tn.enicarthage.EniConnect.service;
+package tn.enicarthage.EniConnect.services;
 
 import tn.enicarthage.EniConnect.entities.Candidature;
-import tn.enicarthage.EniConnect.repository.CandidatureRepository;
+import tn.enicarthage.EniConnect.repositories.CandidatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

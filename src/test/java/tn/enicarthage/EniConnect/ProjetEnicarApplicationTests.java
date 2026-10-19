@@ -1,8 +1,8 @@
 package tn.enicarthage.EniConnect;
 
 import tn.enicarthage.EniConnect.entities.Etat;
-import tn.enicarthage.EniConnect.repository.CandidatureRepository;
-import tn.enicarthage.EniConnect.repository.NouveauEtudiantRepository;
+import tn.enicarthage.EniConnect.repositories.CandidatureRepository;
+import tn.enicarthage.EniConnect.repositories.NouveauEtudiantRepository;
 import tn.enicarthage.EniConnect.entities.Candidature;
 import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
 import org.junit.jupiter.api.Test;

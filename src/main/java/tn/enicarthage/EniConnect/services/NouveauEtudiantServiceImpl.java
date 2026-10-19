@@ -1,8 +1,8 @@
-package tn.enicarthage.EniConnect.service;
+package tn.enicarthage.EniConnect.services;
 
 import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
-import tn.enicarthage.EniConnect.repository.CandidatureRepository;
-import tn.enicarthage.EniConnect.repository.NouveauEtudiantRepository;
+import tn.enicarthage.EniConnect.repositories.CandidatureRepository;
+import tn.enicarthage.EniConnect.repositories.NouveauEtudiantRepository;
 import tn.enicarthage.EniConnect.entities.Candidature;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

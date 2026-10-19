@@ -1,4 +1,4 @@
-package tn.enicarthage.EniConnect.service;
+package tn.enicarthage.EniConnect.services;
 
 import tn.enicarthage.EniConnect.entities.NouveauEtudiant;
 
